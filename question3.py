@@ -48,14 +48,25 @@ def get_letter_grade(average):
     return grade
 
 
-## ASK FOR HOW MANY SCORES
+## PRINT INTRO
+print("")
 print("### Grade Average Calculator ###")
 print("")
 
+## GET AMOUNT OF SCORES AND DECLARE ARRAY
 num_of_scores = int(input("Enter the number of scores you need to enter: "))
 scores_array = []
 
+## GET SCORES
+for num in range(1, num_of_scores + 1):
+    scores_array.append(int(input(f"Enter score {num}: ")))
 
-print(get_letter_grade(int(3)))
+## GET AVERAGE AND LETTER GRADE
+average = calculate_average(scores_array)
+grade = get_letter_grade(average)
 
-print(calculate_average([5, 5, 5, 5]))
+## GRADE REPORT
+print("### GRADE REPORT ###")
+print(f"Test Scores: {scores_array}")
+print(f"Average Score: {average}")
+print(f"Letter Grade: {grade}")
