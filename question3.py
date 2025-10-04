@@ -54,19 +54,63 @@ print("### Grade Average Calculator ###")
 print("")
 
 ## GET AMOUNT OF SCORES AND DECLARE ARRAY
-num_of_scores = int(input("Enter the number of scores you need to enter: "))
+# num_of_scores = int(input("Enter the number of scores you need to enter: "))
 scores_array = []
 
 ## GET SCORES
-for num in range(1, num_of_scores + 1):
-    scores_array.append(int(input(f"Enter score {num}: ")))
+# for num in range(1, num_of_scores + 1):
+#     scores_array.append(int(input(f"Enter score {num}: ")))
+
+## REFACTOR CODE FOR FUN
+## GET SCORES UNTIL DONE IS ENTERED
+done_getting_scores = False
+
+while not done_getting_scores:
+    # RESET SCORE EVERY ITERATION
+    score = None
+    print(f"Current scores: {scores_array}")
+    print("Enter score. Type done when done entering scores.")
+    score = input("Score: ").lower()
+
+    if score == "done":
+        done_getting_scores = True
+
+    ## CHECK IF INPUT WAS ENTERED, IF NOT SHOW ERROR
+    elif len(score) == 0:
+        print("")
+        print("No score entered. Enter score or type done when done entering scores.")
+        print("")
+
+    else:
+        ## CHECK IF INT, IF NOT PRINT ERROR.
+        try:
+            score = int(score)
+
+            if score > 100 or score < 0:
+                print("")
+                print("Invalid number. Cannot have a score above 100 or below 0.")
+                print("")
+                continue
+
+            scores_array.append(score)
+        except ValueError:
+            print(
+                "Invalid number. Enter valid number or type done when done entering scores."
+            )
+            print("")
+
+## CHECK TO SEE IF USER ENTERED DONE ON THE FIRST ITERATION
+if len(scores_array) == 0:
+    print("No scores entered. Exiting program")
+    exit()
 
 ## GET AVERAGE AND LETTER GRADE
 average = calculate_average(scores_array)
 grade = get_letter_grade(average)
 
 ## GRADE REPORT
+print("")
 print("### GRADE REPORT ###")
 print(f"Test Scores: {scores_array}")
-print(f"Average Score: {average}")
+print(f"Average Score: {average:.1f}")
 print(f"Letter Grade: {grade}")
