@@ -1,21 +1,3 @@
-# 1. create fun takes in array
-#     - iterate array and add nums store in sum var
-#     - divide array len by sum to get average
-#     - return average
-#
-# 2. create fun takes in int
-#    - if int >90 return A
-#    - if int 80-89 return B
-#    - if int 70-79 return C
-#    - if int 60-69 return D
-#    - if int <60 return F
-#
-# 3. main code
-#   - ask how many scores store in var
-#   - ask for scores store in array, use for loop
-#   - for score in range(num_of_scores + 1) arr.append()
-
-
 ## CALC AVERAGE
 def calculate_average(nums_array):
     nums_sum = 0
